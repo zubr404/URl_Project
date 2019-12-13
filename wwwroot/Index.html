@@ -36,10 +36,10 @@
     <table class="table table-condensed table-striped table-bordered" style="height:100px">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Длинный Url</th>
                 <th>Короткий Url</th>
                 <th>Количество переходов</th>
+                <th>Дата</th>
                 <th>Изменение</th>
             </tr>
         </thead>
@@ -153,10 +153,10 @@
         // создание строки для таблицы
         var row = function (result) {
             return "<tr data-rowid='" + result.id +
-                "'><td>" + result.id + "</td>" +
-                "<td>" + result.urlLong +
+                "'><td>" + result.urlLong +
                 "</td> <td>" + result.urlShort +
-                "</td> <td>" + result.numberClick + "</td>" +
+                "</td> <td>" + result.numberClick +
+                "</td><td>" + result.dateTimeInput + "</td>" +
             "<td><a class='editLink' data-id='" + result.id + "'>Изменить</a> | <a class='removeLink' data-id='" + result.id + "'>Удалить</a></td></tr>";
         }
 
