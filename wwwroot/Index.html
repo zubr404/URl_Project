@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Сервис сокращения URL</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <style>
+        #errormes{
+            width:500px;
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <h2>Здесь Вы можете сократить ссылку</h2>
+    <form name="url_form">
+        <input type="hidden" name="id" value="0" />
+        <div class="form-group" style="height:inherit">
+            <label for="url">Введите Url:</label>
+            <input class="form-control" name="url" />
+            <label for="url">Введите короткий Url (например, tru-lya-lya. Рзультат: http://localhost:44300/tru-lya-lya) :</label>
+            <input class="form-control" name="urlshort" />
+            <label for="url">Сокращенный Url:</label>
+            <input class="form-control" name="urlcustomer" readonly="" />
+        </div>
+        <div class="panel-body">
+            <button type="submit" id="reduce" class="btn btn-sm btn-primary">Сократить Url</button>
+            <button type="submit" id="save" class="btn btn-sm btn-primary">Сохранить</button>
+            <a id="reset" class="btn btn-sm btn-primary">Сбросить</a>
+            <input class="form-control" id="errormes" readonly="" />
+            <!--<button id="btn1">TEST</button>-->
+        </div>
+    </form>
+    <table class="table table-condensed table-striped table-bordered" style="height:100px">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Длинный Url</th>
+                <th>Короткий Url</th>
+                <th>Количество переходов</th>
+                <th>Изменение</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+
+        // Получение всех url
+        function GetUrls() {
+            $.ajax({
+                url: '/api/Url/geturls',
+                type: 'GET',
+                contentType: "application/json",
+                success: function (result) {
+                    var rows = "";
+                    $.each(result.urlModelsResult, function (index,urldata) {
+                        // добавляем полученные элементы в таблицу
+                        rows += row(urldata);
+                    })
+                    $("table tbody").append(rows);
+                    messageShow(result.errorMes);
+                 }
+            });
+        }
+        // Получение одного url
+        function GetUrl(id) {
+            $.ajax({
+                url: '/api/Url/geturl/'+id,
+                type: 'GET',
+                contentType: "application/json",
+                success: function (result) {
+                    var form = document.forms["url_form"];
+                    form.elements["id"].value = result.urlModelResult.id;
+                    form.elements["url"].value = result.urlModelResult.urlLong;
+                    form.elements["url"].readOnly = true;
+                    form.elements["urlshort"].value = result.urlModelResult.urlShort;
+                    messageShow(result.errorMes);
+                }
+            });
+        }
+        // Добавление url
+        function AddUrl(urlLong, urlShort) {
+            $.ajax({
+                url: "api/url/create",
+                contentType: "application/json",
+                method: "POST",
+                data: JSON.stringify({
+                    UrlLong: urlLong,
+                    UrlShort: urlShort
+                }),
+                success: function (result) {
+                    messageShow(result.errorMes);
+                    $("table tbody").append(row(result.urlModelResult));
+                    reset();
+                    var form = document.forms["url_form"];
+                    form.elements["urlcustomer"].value = result.urlShortCustomer;
+                }
+            })
+        }
+        // Изменение Url
+        function EditUrl(Id, urlLong, urlShort) {
+            $.ajax({
+                url: "api/url/",
+                contentType: "application/json",
+                method: "PUT",
+                data: JSON.stringify({
+                    id: Id,
+                    UrlLong: urlLong,
+                    UrlShort: urlShort
+                }),
+                success: function (result) {
+                    reset();
+                    messageShow(result.errorMes);
+                    $("tr[data-rowid='" + result.urlModelResult.id + "']").replaceWith(row(result.urlModelResult));
+                    document.forms["url_form"].elements["urlcustomer"].value = result.urlShortCustomer;
+                }
+            })
+        }
+        // Удаление Url
+        function DeleteUrl(id) {
+            $.ajax({
+                url: "api/url/"+id,
+                contentType: "application/json",
+                method: "DELETE",
+                success: function (result) {
+                    $("tr[data-rowid='" + result.urlModelResult.id + "']").remove();
+                    messageShow(result.errorMes);
+                }
+            })
+        }
+
+        // отправка формы - Сократить Url
+        $("#reduce").click(function (e) {
+            e.preventDefault();
+            var form = document.forms["url_form"];
+            var url = form.elements["url"].value;
+            var urlshort = form.elements["urlshort"].value;
+            AddUrl(url, urlshort);
+        });
+        // отправка формы - Сохранить
+        $("#save").click(function (e) {
+            e.preventDefault();
+            var form = document.forms["url_form"];
+            var url = form.elements["url"].value;
+            var urlshort = form.elements["urlshort"].value;
+            var id = form.elements["id"].value;
+            EditUrl(id, url, urlshort);
+        });
+        // создание строки для таблицы
+        var row = function (result) {
+            return "<tr data-rowid='" + result.id +
+                "'><td>" + result.id + "</td>" +
+                "<td>" + result.urlLong +
+                "</td> <td>" + result.urlShort +
+                "</td> <td>" + result.numberClick + "</td>" +
+            "<td><a class='editLink' data-id='" + result.id + "'>Изменить</a> | <a class='removeLink' data-id='" + result.id + "'>Удалить</a></td></tr>";
+        }
+
+        // error message
+        function messageShow(mess) {
+            var form = document.forms["url_form"];
+            form.elements["errormes"].value = mess;
+        }
+        // сброс формы
+        function reset() {
+            var form = document.forms["url_form"];
+            form.reset();
+            form.elements["id"].value = 0;
+            form.elements["url"].readOnly = false;
+        }
+        // сброс значений формы
+        $("#reset").click(function (e) {
+            var form = document.forms["url_form"];
+            form.elements["url"].readOnly = false;
+            e.preventDefault();
+            reset();
+        })
+         
+        // нажимаем на ссылку Изменить
+        $("body").on("click", ".editLink", function () {
+            var id = $(this).data("id");
+            GetUrl(id);
+        })
+        // нажимаем на ссылку Удалить
+        $("body").on("click", ".removeLink", function () {
+            var id = $(this).data("id");
+            alert("click removeLink id = " + id);
+            DeleteUrl(id);
+        })
+ 
+
+        // загрузка таблицы
+        GetUrls();
+    </script>
+    
+
+
+
+</body>
+</html>
