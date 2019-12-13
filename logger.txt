@@ -1,72 +1,8 @@
 Entity Framework Core 2.1.11-servicing-32099 initialized 'UrlContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
-Executed DbCommand (17ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [u].[ID], [u].[DateTimeInput], [u].[NumberClick], [u].[UrlLong], [u].[UrlShort]
-FROM [UrlModels] AS [u]
-Executed action method URl_Project.Controllers.UrlController.GetUrls (URl_Project), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1051.8073ms.
-Executing ObjectResult, writing value of type 'URl_Project.Service.RequestUrlResult'.
-Executed action URl_Project.Controllers.UrlController.GetUrls (URl_Project) in 1234.6225ms
-Request finished in 1432.9265ms 200 application/json; charset=utf-8
-Entity Framework Core 2.1.11-servicing-32099 initialized 'UrlContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
-Executed DbCommand (42ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [u].[ID], [u].[DateTimeInput], [u].[NumberClick], [u].[UrlLong], [u].[UrlShort]
-FROM [UrlModels] AS [u]
-Executed action method URl_Project.Controllers.UrlController.GetUrls (URl_Project), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1327.9068ms.
-Executing ObjectResult, writing value of type 'URl_Project.Service.RequestUrlResult'.
-Executed action URl_Project.Controllers.UrlController.GetUrls (URl_Project) in 1498.6381ms
-Request finished in 1685.3055ms 200 application/json; charset=utf-8
-Entity Framework Core 2.1.11-servicing-32099 initialized 'UrlContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
-Executed DbCommand (29ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [u].[ID], [u].[DateTimeInput], [u].[NumberClick], [u].[UrlLong], [u].[UrlShort]
-FROM [UrlModels] AS [u]
-Executed action method URl_Project.Controllers.UrlController.GetUrls (URl_Project), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1406.4777ms.
-Executing ObjectResult, writing value of type 'URl_Project.Service.RequestUrlResult'.
-Executed action URl_Project.Controllers.UrlController.GetUrls (URl_Project) in 1718.1882ms
-Request finished in 2028.0515ms 200 application/json; charset=utf-8
-Entity Framework Core 2.1.11-servicing-32099 initialized 'UrlContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
-Executed DbCommand (15ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [u].[ID], [u].[DateTimeInput], [u].[NumberClick], [u].[UrlLong], [u].[UrlShort]
-FROM [UrlModels] AS [u]
-Executed action method URl_Project.Controllers.UrlController.GetUrls (URl_Project), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1077.2719ms.
-Executing ObjectResult, writing value of type 'URl_Project.Service.RequestUrlResult'.
-Executed action URl_Project.Controllers.UrlController.GetUrls (URl_Project) in 1236.8159ms
-Request finished in 1402.5182ms 200 application/json; charset=utf-8
-Entity Framework Core 2.1.11-servicing-32099 initialized 'UrlContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
 Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 SELECT [u].[ID], [u].[DateTimeInput], [u].[NumberClick], [u].[UrlLong], [u].[UrlShort]
 FROM [UrlModels] AS [u]
-Executed action method URl_Project.Controllers.UrlController.GetUrls (URl_Project), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1003.7806ms.
+Executed action method URl_Project.Controllers.UrlController.GetUrls (URl_Project), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1051.907ms.
 Executing ObjectResult, writing value of type 'URl_Project.Service.RequestUrlResult'.
-Executed action URl_Project.Controllers.UrlController.GetUrls (URl_Project) in 1163.3735ms
-Request finished in 1331.8866ms 200 application/json; charset=utf-8
-Entity Framework Core 2.1.11-servicing-32099 initialized 'UrlContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
-Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [u].[ID], [u].[DateTimeInput], [u].[NumberClick], [u].[UrlLong], [u].[UrlShort]
-FROM [UrlModels] AS [u]
-Executed action method URl_Project.Controllers.UrlController.GetUrls (URl_Project), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1049.7683ms.
-Executing ObjectResult, writing value of type 'URl_Project.Service.RequestUrlResult'.
-Executed action URl_Project.Controllers.UrlController.GetUrls (URl_Project) in 1220.4477ms
-Request finished in 1414.7261ms 200 application/json; charset=utf-8
-Entity Framework Core 2.1.11-servicing-32099 initialized 'UrlContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
-Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [u].[ID], [u].[DateTimeInput], [u].[NumberClick], [u].[UrlLong], [u].[UrlShort]
-FROM [UrlModels] AS [u]
-Executed action method URl_Project.Controllers.UrlController.GetUrls (URl_Project), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1100.6931ms.
-Executing ObjectResult, writing value of type 'URl_Project.Service.RequestUrlResult'.
-Executed action URl_Project.Controllers.UrlController.GetUrls (URl_Project) in 1322.358ms
-Request finished in 1525.4544ms 200 application/json; charset=utf-8
-Entity Framework Core 2.1.11-servicing-32099 initialized 'UrlContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
-Executed DbCommand (18ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [u].[ID], [u].[DateTimeInput], [u].[NumberClick], [u].[UrlLong], [u].[UrlShort]
-FROM [UrlModels] AS [u]
-Executed action method URl_Project.Controllers.UrlController.GetUrls (URl_Project), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1487.5873ms.
-Executing ObjectResult, writing value of type 'URl_Project.Service.RequestUrlResult'.
-Executed action URl_Project.Controllers.UrlController.GetUrls (URl_Project) in 1767.6997ms
-Request finished in 2034.6711ms 200 application/json; charset=utf-8
-Entity Framework Core 2.1.11-servicing-32099 initialized 'UrlContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
-Executed DbCommand (17ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT [u].[ID], [u].[DateTimeInput], [u].[NumberClick], [u].[UrlLong], [u].[UrlShort]
-FROM [UrlModels] AS [u]
-Executed action method URl_Project.Controllers.UrlController.GetUrls (URl_Project), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1322.5867ms.
-Executing ObjectResult, writing value of type 'URl_Project.Service.RequestUrlResult'.
-Executed action URl_Project.Controllers.UrlController.GetUrls (URl_Project) in 1591.1872ms
-Request finished in 1917.8415ms 200 application/json; charset=utf-8
+Executed action URl_Project.Controllers.UrlController.GetUrls (URl_Project) in 1229.1985ms
+Request finished in 1441.9343ms 200 application/json; charset=utf-8
