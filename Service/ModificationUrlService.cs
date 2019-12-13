@@ -129,28 +129,37 @@ namespace URl_Project.Service
         {
             RequestUrlResult result = new RequestUrlResult();
 
-            if (GetIsCorrectUrl(urlModel.UrlShort, isLongUrl: false))
+            if (urlModel != null)
             {
-                if (!GetIsSameUrlShort(urlModel.UrlShort))
+                if (GetIsCorrectUrl(urlModel.UrlShort, isLongUrl: false))
                 {
-                    UrlModel urlModel1 = db.UrlModels.Get(urlModel.ID);
-                    urlModel1.UrlShort = urlModel.UrlShort;
-                    db.Save();
-                    result.IsSuccess = true;
-                    result.UrlModelResult = urlModel1;
-                    result.UrlShortCustomer = UrlRoutesHelper.ROUTEHOST.Replace("http", "https") + UrlRoutesHelper.ROUTECONTROLLER + "/" + urlModel.UrlShort;
+                    if (!GetIsSameUrlShort(urlModel.UrlShort))
+                    {
+                        UrlModel urlModel1 = db.UrlModels.Get(urlModel.ID);
+                        urlModel1.UrlShort = urlModel.UrlShort;
+                        db.Save();
+                        result.IsSuccess = true;
+                        result.UrlModelResult = urlModel1;
+                        result.UrlShortCustomer = UrlRoutesHelper.ROUTEHOST.Replace("http", "https") + UrlRoutesHelper.ROUTECONTROLLER + "/" + urlModel.UrlShort;
+                    }
+                    else
+                    {
+                        result.IsSuccess = false;
+                        result.ErrorMes = "Короткий URL уже имеется!";
+                    }
                 }
                 else
                 {
                     result.IsSuccess = false;
-                    result.ErrorMes = "Короткий URL уже имеется!";
+                    result.ErrorMes = "Короткий URL имеет неверный формат!";
                 }
             }
             else
             {
                 result.IsSuccess = false;
-                result.ErrorMes = "Короткий URL имеет неверный формат!";
+                result.ErrorMes = "Неизвестная ошибка!";
             }
+            
             return result;
         }
 
